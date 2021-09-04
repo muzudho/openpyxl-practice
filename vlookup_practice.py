@@ -7,7 +7,15 @@ wb = xl.load_workbook('test-data/test-data.xlsx')
 ws = wb['Test3']
 
 def vlookup(key, keyColumnAlphabet, resultColumnAlphabet):
-    """A列から 3 を探します
+    """keyColumnAlphabet列から key を探し、見つけた行の resultColumnAlphabet列のセルを返します
+    Parameters
+    ----------
+    key : str
+        探す値
+    keyColumnAlphabet : str
+        探す列
+    resultColumnAlphabet : str
+        欲しい値がある列
     """
     for rowNumber in range(2,10):
         id = ws[f'{keyColumnAlphabet}{rowNumber}'].value
