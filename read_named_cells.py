@@ -8,12 +8,14 @@ print(f'Sheet names| {wb.sheetnames}')
 tileMap = wb.defined_names['TileMap']
 print(f'tileMap.attr_text| {tileMap.attr_text}')
 
-tableList = [wb[s][r] for s, r in tileMap.destinations]
-print(f'tableList| {tableList}')
+# 飛び地を集めています。リストの中に、ネストしたタプルが入っています
+bookView = [wb[s][r] for s, r in tileMap.destinations]
+print(f'bookView| {bookView}')
 
-for rowsTuple in tableList:
-    print(f'rowsTuple| {rowsTuple}')
-    for columnsTuple in rowsTuple:
-        print(f'columnsTuple| {columnsTuple}')
-        for cell in columnsTuple:
+# 各セルに１つずつ訪れます
+for sheetView in bookView:
+    print(f'sheetView| {sheetView}')
+    for rowView in sheetView:
+        print(f'rowView| {rowView}')
+        for cell in rowView:
             print(f'cell(row={cell.row} column={cell.column} coordinate={cell.coordinate} value={cell.value})')

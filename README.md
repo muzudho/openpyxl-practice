@@ -32,4 +32,7 @@ python.exe read_named_cells_style.py
 
 # 名前付き範囲のセルのスタイルの設定チュートリアル
 python.exe update_named_cells_style.py
+
+# VLookupの自力実装の練習
+python.exe vlookup_practice.py
 ```
