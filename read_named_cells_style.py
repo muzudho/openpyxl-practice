@@ -1,4 +1,4 @@
-from openpyxl import load_workbook
+import openpyxl as xl
 from openpyxl.styles.colors import Color
 
 def colorToDescription(name, color):
@@ -39,7 +39,7 @@ def boarderSideToDescription(name, side):
         return ''
 
 # Book
-wb = load_workbook('test-data/test-data.xlsx')
+wb = xl.load_workbook('test-data/test-data.xlsx')
 
 # 名前付き範囲
 tileMap = wb.defined_names['TileMap']

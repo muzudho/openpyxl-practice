@@ -1,7 +1,7 @@
-from openpyxl import load_workbook
+import openpyxl as xl
 
 # Book
-wb = load_workbook('test-data/test-data.xlsx')
+wb = xl.load_workbook('test-data/test-data.xlsx')
 print(f'Sheet names| {wb.sheetnames}')
 
 # 名前付き範囲
@@ -16,4 +16,4 @@ for rowsTuple in tableList:
     for columnsTuple in rowsTuple:
         print(f'columnsTuple| {columnsTuple}')
         for cell in columnsTuple:
-            print(f'cell.value| {cell.value}')
+            print(f'cell(row={cell.row} column={cell.column} coordinate={cell.coordinate} value={cell.value})')

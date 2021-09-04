@@ -2,6 +2,7 @@ import openpyxl as xl
 # from openpyxl.styles.colors import Color
 # from openpyxl.styles.fonts import Font
 # from openpyxl.styles import PatternFill
+from openpyxl.styles.borders import Border, Side
 
 def colorToDescription(name, color):
     """色にはいくつか種類があるので、対応します
@@ -56,11 +57,14 @@ for rowsTuple in tableList:
             # 値に 1 を足します
             cell.value += 1
 
-            # 文字を赤色にします
-            cell.font.color.rgb='00FF3300'
+            # 文字色を塗ります
+            cell.font.color.rgb='00CC3333'
 
-            # 背景色を青色にします
-            cell.fill.fgColor.rgb = '000000FF'
+            # 背景色を塗ります
+            cell.fill.fgColor.rgb = '00CCFFFF'
 
+            # セルの上辺に線を引きます
+            side = Side(style='thin', color='000000')
+            cell.border = Border(top=side, bottom=None, left=None, right=None)
 # Saving to a file
 wb.save(filePath)
