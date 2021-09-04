@@ -1,7 +1,7 @@
 from openpyxl import load_workbook
 from openpyxl.styles.colors import Color
 
-def colorToDescription(color):
+def colorToDescription(name, color):
     """色にはいくつか種類があるので、対応します
     Parameters
     ----------
@@ -9,13 +9,13 @@ def colorToDescription(color):
         色オブジェクト
     """
     if color.type=='theme':
-        return f'theme={color.theme} tint={color.tint}'
+        return f'{name}(theme={color.theme} tint={color.tint})'
     elif color.type=='indexed':
-        return f'indexed={color.indexed}'
+        return f'{name}(indexed={color.indexed})'
     elif color.type=='rgb':
-        return f'rgb={color.rgb}'
+        return f'{name}(rgb={color.rgb})'
     else:
-        return f'type={color.type}'
+        return f'{name}(type={color.type})'
 
 def boarderSideToDescription(name, side):
     """上下左右にあるタイプの境界線を説明します
@@ -25,11 +25,14 @@ def boarderSideToDescription(name, side):
         上下左右にあるタイプの境界線オブジェクト
     """
     if side.style=='thick':
-        return f'{name}(thick color={colorToDescription(side.color)})'
+        s = colorToDescription('color', side.color)
+        return f'{name}(thick {s})'
     elif side.style=='thin':
-        return f'{name}(thin color={colorToDescription(side.color)})'
+        s = colorToDescription('color', side.color)
+        return f'{name}(thin {s})'
     elif side.style=='medium':
-        return f'{name}(medium color={colorToDescription(side.color)})'
+        s = colorToDescription('color', side.color)
+        return f'{name}(medium {s})'
     elif not(side.style is None):
         return f'{name}(style={side.style})'
     else:
@@ -49,13 +52,16 @@ for rowsTuple in tableList:
             # 値
             print(f'|cell.value|{cell.value:2}|',end='')
             # フォント色
-            print(f'cell.font.color|{colorToDescription(cell.font.color)}|',end='')
+            s = colorToDescription('cell.font.color', cell.font.color)
+            print(f'{s}|',end='')
             if cell.fill.patternType=='solid':
                 # print(f'cell.fill|{cell.fill}|',end='')
                 # フィル前景色
-                print(f'cell.fill.fgColor|{colorToDescription(cell.fill.fgColor)}|',end='')
+                s = colorToDescription('cell.fill.fgColor', cell.fill.fgColor)
+                print(f'{s}|',end='')
                 # フィル背景色
-                print(f'cell.fill.bgColor|{colorToDescription(cell.fill.bgColor)}|',end='')
+                s = colorToDescription('cell.fill.bgColor', cell.fill.bgColor)
+                print(f'{s}|',end='')
             else:
                 print(f'cell.fill.patternType|{cell.fill.patternType}|',end='')
 
