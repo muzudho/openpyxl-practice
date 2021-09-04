@@ -1,6 +1,7 @@
-from openpyxl import load_workbook
-from openpyxl.styles.colors import Color
-from openpyxl.styles.fonts import Font
+import openpyxl as xl
+# from openpyxl.styles.colors import Color
+# from openpyxl.styles.fonts import Font
+# from openpyxl.styles import PatternFill
 
 def colorToDescription(name, color):
     """色にはいくつか種類があるので、対応します
@@ -42,7 +43,7 @@ def boarderSideToDescription(name, side):
 filePath = './test-data/test-data.xlsx'
 
 # Book
-wb = load_workbook(filePath)
+wb = xl.load_workbook(filePath)
 
 # 名前付き範囲
 tileMap = wb.defined_names['TileMap2']
@@ -56,7 +57,10 @@ for rowsTuple in tableList:
             cell.value += 1
 
             # 文字を赤色にします
-            cell.font.color.rgb='00FF0000'
+            cell.font.color.rgb='00FF3300'
+
+            # 背景色を青色にします
+            cell.fill.fgColor.rgb = '000000FF'
 
 # Saving to a file
 wb.save(filePath)
