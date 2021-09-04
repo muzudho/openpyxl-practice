@@ -21,6 +21,9 @@ python.exe create_a_workbook.py
 # セルの値を読み取るチュートリアル
 python.exe read_cell.py
 
+# セルのスタイルをコピーするチュートリアル
+python.exe update_copy_cell_style.py
+
 # 名前付き範囲のセル読取チュートリアル
 python.exe read_named_cells.py
 

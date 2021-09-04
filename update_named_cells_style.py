@@ -66,5 +66,6 @@ for rowsTuple in tableList:
             # セルの上辺に線を引きます
             side = Side(style='thin', color='000000')
             cell.border = Border(top=side, bottom=None, left=None, right=None)
+
 # Saving to a file
 wb.save(filePath)
