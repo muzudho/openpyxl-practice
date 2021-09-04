@@ -18,6 +18,9 @@ pip install openpyxl
 # Workbookを作成するチュートリアル
 python.exe create_a_workbook.py
 
-# チュートリアル
+# 名前付き範囲のセル読取チュートリアル
 python.exe read_named_cells.py
+
+# 名前付き範囲のセルのスタイル読取チュートリアル
+python.exe read_named_cells_style.py
 ```
