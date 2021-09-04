@@ -23,4 +23,7 @@ python.exe read_named_cells.py
 
 # 名前付き範囲のセルのスタイル読取チュートリアル
 python.exe read_named_cells_style.py
+
+# 名前付き範囲のセルのスタイルの設定チュートリアル
+python.exe update_named_cells_style.py
 ```
