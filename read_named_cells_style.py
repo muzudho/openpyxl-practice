@@ -17,6 +17,24 @@ def colorToDescription(color):
     else:
         return f'type={color.type}'
 
+def boarderSideToDescription(name, side):
+    """上下左右にあるタイプの境界線を説明します
+    Parameters
+    ----------
+    side : openpyxl.styles.borders.Side
+        上下左右にあるタイプの境界線オブジェクト
+    """
+    if side.style=='thick':
+        return f'{name}(thick color={colorToDescription(side.color)})'
+    elif side.style=='thin':
+        return f'{name}(thin color={colorToDescription(side.color)})'
+    elif side.style=='medium':
+        return f'{name}(medium color={colorToDescription(side.color)})'
+    elif not(side.style is None):
+        return f'{name}(style={side.style})'
+    else:
+        return ''
+
 # Book
 wb = load_workbook('test-data/test-data.xlsx')
 
@@ -40,6 +58,22 @@ for rowsTuple in tableList:
                 print(f'cell.fill.bgColor|{colorToDescription(cell.fill.bgColor)}|',end='')
             else:
                 print(f'cell.fill.patternType|{cell.fill.patternType}|',end='')
+
+            # 境界線
+            # print(f'|cell.border|{cell.border}|',end='')
+            # いろいろあるがとりあえずいくつか取る
+            s = boarderSideToDescription('cell.border.left', cell.border.left)
+            if s!='':
+                print(f'{s}|',end='')
+            s = boarderSideToDescription('cell.border.right', cell.border.right)
+            if s!='':
+                print(f'{s}|',end='')
+            s = boarderSideToDescription('cell.border.top', cell.border.top)
+            if s!='':
+                print(f'{s}|',end='')
+            s = boarderSideToDescription('cell.border.bottom', cell.border.bottom)
+            if s!='':
+                print(f'{s}|',end='')
 
             # 改行
             print('')
