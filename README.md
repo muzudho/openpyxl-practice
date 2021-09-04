@@ -15,5 +15,9 @@ pip install openpyxl
 ## Tutorial
 
 ```shell
+# Workbookを作成するチュートリアル
 python.exe create_a_workbook.py
+
+# チュートリアル
+python.exe read_named_cells.py
 ```
